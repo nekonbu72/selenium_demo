@@ -52,3 +52,6 @@ driver.find_element_by_link_text(config.LINK).click()
 driver.switch_to.window(default_window)
 sleep(3)
 driver.close()
+driver.quit()
+
+# os.remove("geckodriver.log")
