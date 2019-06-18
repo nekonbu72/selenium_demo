@@ -1,0 +1,8 @@
+.mypy_cache
+.venv
+build
+dist
+*.spec
+src/__pycache__
+src/config.py
+downloads
