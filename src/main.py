@@ -10,11 +10,15 @@ config.clean_download_dir()
 fp = webdriver.FirefoxProfile()
 fp.set_preference("browser.download.folderList", 2)
 fp.set_preference("browser.download.manager.showWhenStarting", False)
+# windows 7 だと効かない
 fp.set_preference("browser.download.dir", config.download_dir())
 fp.set_preference("browser.helperApps.neverAsk.saveToDisk", config.MIMETYPE)
 
 driver = webdriver.Firefox(
-    firefox_profile=fp, executable_path=config.geckodriver_path())
+    firefox_profile=fp,
+    executable_path=config.geckodriver_path(),
+    service_log_path=config.LOG_PATH
+)
 driver.implicitly_wait(2)
 
 driver.get(config.URL)

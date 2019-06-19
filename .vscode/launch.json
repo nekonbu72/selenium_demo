@@ -10,6 +10,13 @@
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: main.py",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}\\src\\main.py",
+      "console": "integratedTerminal"
     }
   ]
 }

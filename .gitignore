@@ -6,4 +6,4 @@ dist
 src/__pycache__
 src/config.py
 downloads
-geckodriver.log
+log
