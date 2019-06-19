@@ -16,6 +16,6 @@ selenium = "*"
 python_version = "3.7"
 
 [scripts]
-build = 'pyinstaller src\\main.py --onefile'
+build = 'pyinstaller src\\main.py --onefile --hidden-import selenium'
 exe = 'dist\\main.exe'
 rd = 'rd build /s /q'
