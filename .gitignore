@@ -2,8 +2,8 @@
 .venv
 build
 dist
-*.spec
 src/__pycache__
-src/config.py
-downloads
+src/secret.py
+geckodriver.exe
+download
 log

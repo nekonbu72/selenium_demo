@@ -1,5 +1,3 @@
-import os
-import pathlib
 from time import sleep
 
 from config import Config
@@ -11,14 +9,17 @@ from userprofile import profile_dir
 # https://firefox-source-docs.mozilla.org/testing/geckodriver/Support.html
 
 fp = webdriver.FirefoxProfile(profile_directory=profile_dir())
-for k, v in Config.PREF.items():
+for k, v in Config.PREFERENCE.items():
     fp.set_preference(k, v)
 
 driver = webdriver.Firefox(
     firefox_profile=fp,
+    firefox_binary=Config.FIREFOX,
     executable_path=Config.GECKODRIVER,
     log_path=Config.LOG
 )
+
+driver.implicitly_wait(2)
 
 driver.get(Secret.URL)
 driver.find_element_by_name("sei_login").send_keys(Secret.SSO_ID)
@@ -58,4 +59,5 @@ driver.find_element_by_link_text(Secret.LINK).click()
 
 driver.switch_to.window(default_window)
 sleep(3)
+
 driver.quit()
