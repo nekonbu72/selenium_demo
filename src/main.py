@@ -3,12 +3,11 @@ from time import sleep
 from config import Config
 from secret import Secret
 from selenium import webdriver
-from userprofile import profile_dir
 
 # firefox, geckodriver, selenium のバージョン対応は下記をチェック
 # https://firefox-source-docs.mozilla.org/testing/geckodriver/Support.html
 
-fp = webdriver.FirefoxProfile(profile_directory=profile_dir())
+fp = webdriver.FirefoxProfile(profile_directory=Config.PROFILE)
 for k, v in Config.PREFERENCE.items():
     fp.set_preference(k, v)
 

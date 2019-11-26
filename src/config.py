@@ -1,5 +1,4 @@
-from download import download_dir
-from userprofile import profile_dir
+from setupdir import download_dir, log_file, profile_dir
 
 
 class Config:
@@ -78,13 +77,17 @@ class Config:
 
     GECKODRIVER = "geckodriver.exe"
 
-    LOG = "log\\gecko.log"
+    LOG = log_file()
+    # if LOG is None:
+    #     raise Exception("InvalidLogFilePathError")
 
     USER_DEFINED = 2
 
     DOWNLOAD = download_dir()
     if DOWNLOAD is None:
         raise Exception("ProfileNotExistError")
+
+    print(f"download dir is {DOWNLOAD} .")
 
     PREFERENCE = {"browser.download.useDownloadDir": True,
                   "browser.helperApps.neverAsk.saveToDisk": ",".join(MIME_TYPES),
@@ -93,5 +96,5 @@ class Config:
                   "browser.download.dir": DOWNLOAD}
 
     PROFILE = profile_dir()
-    if PROFILE is None:
-        raise Exception("ProfileNotExistError")
+    # if PROFILE is None:
+    #     raise Exception("ProfileNotExistError")
