@@ -1,3 +1,4 @@
+from pathlib import Path
 from time import sleep
 
 from config import Config
@@ -8,8 +9,15 @@ from selenium import webdriver
 # https://firefox-source-docs.mozilla.org/testing/geckodriver/Support.html
 
 fp = webdriver.FirefoxProfile(profile_directory=Config.PROFILE)
-for k, v in Config.PREFERENCE.items():
-    fp.set_preference(k, v)
+for key, value in Config.PREFERENCE.items():
+    fp.set_preference(key, value)
+
+# firefox が立ちあがる前に削除しないといけない
+FOLDERINNERTEMP = "webdriver-py-profilecopy"
+for name in ["mimeTypes.rdf", "handlers.json"]:
+    p = Path(fp.tempfolder).joinpath(FOLDERINNERTEMP, name)
+    if p.is_file():
+        p.unlink()
 
 driver = webdriver.Firefox(
     firefox_profile=fp,
@@ -57,6 +65,6 @@ sleep(2)
 driver.find_element_by_link_text(Secret.LINK).click()
 
 driver.switch_to.window(default_window)
-sleep(3)
+sleep(60)
 
 driver.quit()
