@@ -23,7 +23,8 @@ with webdriver.Firefox(
     firefox_profile=fp,
     firefox_binary=Config.FIREFOX,
     executable_path=Config.GECKODRIVER,
-    log_path=Config.LOG
+    service_log_path=Config.LOG,
+    # log_path=Config.LOG
 ) as driver:
 
     driver.implicitly_wait(2)
@@ -65,4 +66,4 @@ with webdriver.Firefox(
     driver.find_element_by_link_text(Secret.LINK).click()
 
     driver.switch_to.window(default_window)
-    sleep(10)
+    sleep(20)
