@@ -87,7 +87,7 @@ class Config:
     if DOWNLOAD is None:
         raise Exception("ProfileNotExistError")
 
-    print(f"download dir is {DOWNLOAD}.")
+    print(f"download dir is [ {DOWNLOAD} ].")
 
     PREFERENCE = {"browser.download.useDownloadDir": True,
                   "browser.helperApps.neverAsk.saveToDisk": ",".join(MIME_TYPES),
